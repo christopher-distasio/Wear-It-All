@@ -47,7 +47,7 @@ const SellForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:3127/items/new', {
+            const response = await fetch('https://wearitagain.onrender.com/items/new', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -95,11 +95,7 @@ const SellForm = () => {
                             <p>Click to upload image</p>
                         </Form.Label>
                         <div className="image-upload-field" onDrop={handleDrop} onDragOver={handleDragOver}>
-                            {image ? (
-                                <img src={image} alt="Uploaded" style={{ maxWidth: '100%' }} />
-                            ) : (
-                                <p className="hidden">Drop image here to upload</p>
-                            )}
+                            {image ? <img src={image} alt="Uploaded" style={{ maxWidth: '100%' }} /> : <p className="hidden">Drop image here to upload</p>}
                         </div>
                         <Form.Control type="file" accept="image/*" style={{ display: 'none' }} onChange={handleImageChange} />
                     </Form.Group>
@@ -130,11 +126,7 @@ const SellForm = () => {
                         <Form.Control as="textarea" rows={3} placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} />
                     </Form.Group>
 
-                    <Button
-                        className="sellButton"
-                        type="submit"
-                        style={{ backgroundColor: 'lightblue', color: 'black', borderColor: '#7adda0', marginTop: '20px', marginBottom: '20px' }}
-                    >
+                    <Button className="sellButton" type="submit" style={{ backgroundColor: 'lightblue', color: 'black', borderColor: '#7adda0', marginTop: '20px', marginBottom: '20px' }}>
                         Submit
                     </Button>
                 </Form>

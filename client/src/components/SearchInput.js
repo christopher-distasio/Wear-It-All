@@ -15,7 +15,7 @@ export default function SearchInput() {
     const handleSearch = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3127/items');
+            const response = await fetch('https://wearitagain.onrender.com/items');
             const jsonData = await response.json();
             setJsonData(jsonData);
             const filtered = jsonData.filter((item) => item.name.toLowerCase() === search.toLowerCase());
@@ -31,11 +31,13 @@ export default function SearchInput() {
             <Navbar className="bg justify-content-between">
                 <Form onSubmit={handleSearch}>
                     <Row className="row">
-                        <Col xs="" style={{paddingLeft: "30px"}}>
+                        <Col xs="" style={{ paddingLeft: '30px' }}>
                             <Form.Control type="text" placeholder="Search" className="mr-sm-2" value={search} onChange={(e) => setSearch(e.target.value)} />
                         </Col>
                         <Col xs="auto">
-                            <Button type="submit" style={{backgroundColor: "lightblue", color:"black", borderColor:"#7adda0"}}>Search</Button>
+                            <Button type="submit" style={{ backgroundColor: 'lightblue', color: 'black', borderColor: '#7adda0' }}>
+                                Search
+                            </Button>
                         </Col>
                     </Row>
                 </Form>
