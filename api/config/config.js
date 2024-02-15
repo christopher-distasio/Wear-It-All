@@ -1,23 +1,20 @@
 module.exports = {
-        development: {
-                username: "postgres",
-                password: "Baseball1027!",
-                database: "WearItAgain",
-                host: "127.0.0.1",
-                dialect: "postgres",
+    development: {
+        url: process.env.DEV_DATABASE_URL,
+        dialect: 'postgres',
+    },
+    test: {
+        url: process.env.TEST_DATABASE_URL,
+        dialect: 'postgres',
+    },
+    production: {
+        url: process.env.DATABASE_URL,
+        dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false, // For self-signed certificates
+            },
         },
-        test: {
-                username: "postgres",
-                password: "",
-                database: "WearItAgain",
-                host: "127.0.0.1",
-                dialect: "postgres",
-        },
-        production: {
-                username: "postgres",
-                password: "",
-                database: "WearItAgain",
-                host: "127.0.0.1",
-                dialect: "postgres",
-        },
+    },
 };
